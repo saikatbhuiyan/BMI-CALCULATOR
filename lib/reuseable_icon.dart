@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-const labelTextStyle = TextStyle(
-  fontSize: 18.0,
-  color: Color(0xFFdcdde1),
-  fontWeight: FontWeight.w900,
-);
+import 'constant.dart';
 
 class ReuseableIcon extends StatelessWidget {
   ReuseableIcon({this.iconReuse, this.textReuse});
@@ -27,7 +22,7 @@ class ReuseableIcon extends StatelessWidget {
         ),
         Text(
           textReuse,
-          style: labelTextStyle,
+          style: kLabelTextStyle,
         )
       ],
     );
