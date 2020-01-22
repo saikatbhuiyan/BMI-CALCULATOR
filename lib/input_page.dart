@@ -5,6 +5,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'reuseable_card.dart';
 import 'reuseable_icon.dart';
 import 'constant.dart';
+import 'bottom_button.dart';
+import 'calculator.dart';
+import 'result_page.dart';
 
 enum Gender { male, female }
 
@@ -121,8 +124,8 @@ class _InputPageState extends State<InputPage> {
                   ),
                   child: Slider(
                       value: height.toDouble(),
-                      min: 120.0,
-                      max: 220.0,
+                      min: 100.0,
+                      max: 240.0,
 //                      activeColor: Colors.white,
                       inactiveColor: Colors.white,
                       onChanged: (double newValue) {
@@ -220,12 +223,20 @@ class _InputPageState extends State<InputPage> {
               )),
             ],
           )),
-          Container(
-            color: kBottomContainerColor,
-            margin: EdgeInsets.only(top: 10),
-            width: double.infinity,
-            height: kBottomContainerHeight,
-          )
+          BottomButton(
+            onPress: () {
+              Calculator cal = Calculator(height: height, weight: weight);
+
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Result(
+                          bmiResult: cal.calculateBMI(),
+                          resultText: cal.getResult(),
+                          interpretation: cal.getInterpretation())));
+            },
+            buttonTitle: 'CALCULATE',
+          ),
         ],
       ),
     );
